@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#0A0A0F"/>
+  <rect x="2" y="2" width="508" height="508" rx="94" stroke="#C9A84C" stroke-width="3" stroke-opacity="0.45"/>
+
+  <!-- Corner accents (Kente-inspired) -->
+  <rect x="24" y="24" width="60" height="8" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+  <rect x="24" y="24" width="8" height="60" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+  <rect x="428" y="24" width="60" height="8" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+  <rect x="480" y="24" width="8" height="60" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+  <rect x="24" y="480" width="60" height="8" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+  <rect x="24" y="428" width="8" height="60" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+  <rect x="428" y="480" width="60" height="8" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+  <rect x="480" y="428" width="8" height="60" rx="4" fill="#C9A84C" fill-opacity="0.5"/>
+
+  <!-- Outer glow ring -->
+  <circle cx="256" cy="256" r="180" stroke="#C9A84C" stroke-width="1.5" stroke-opacity="0.15"/>
+
+  <!-- 3D Cube / Vault - large centered -->
+  <path d="M256 96L368 158V282L256 344L144 282V158L256 96Z" fill="#C9A84C" fill-opacity="0.95"/>
+  <path d="M144 282L256 344V448L144 386V282Z" fill="#8B6F2E"/>
+  <path d="M368 282L256 344V448L368 386V282Z" fill="#C9A84C" fill-opacity="0.65"/>
+
+  <!-- Top face highlight -->
+  <path d="M256 96L368 158L256 220L144 158L256 96Z" fill="white" fill-opacity="0.1"/>
+
+  <!-- Inner cube detail -->
+  <path d="M256 154L308 183V241L256 270L204 241V183L256 154Z" fill="#0A0A0F" fill-opacity="0.3"/>
+  <line x1="256" y1="154" x2="256" y2="270" stroke="#C9A84C" stroke-width="2" stroke-opacity="0.4"/>
+  <line x1="204" y1="241" x2="308" y2="183" stroke="#C9A84C" stroke-width="2" stroke-opacity="0.4"/>
+</svg>

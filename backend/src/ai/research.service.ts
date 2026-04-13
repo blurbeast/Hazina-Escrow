@@ -1,7 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
 export interface ResearchInput {
   userQuery: string;
   budget: number;
@@ -29,6 +27,7 @@ export interface ResearchReport {
 }
 
 export async function synthesizeResearch(input: ResearchInput): Promise<ResearchReport> {
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   const prompt = `You are the Hazina Research Agent — an autonomous DeFi yield researcher. You have just purchased data from four specialised on-chain data sellers using micro-payments on Stellar. Synthesise all four datasets into a single, actionable research report for the user.
 
 USER QUERY: "${input.userQuery}"
@@ -77,7 +76,7 @@ Respond ONLY with valid JSON in this exact shape (no markdown fences):
 
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 1200,
+    max_tokens: 2048,
     messages: [{ role: 'user', content: prompt }],
   });
 

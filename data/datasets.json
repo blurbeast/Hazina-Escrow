@@ -134,8 +134,8 @@
           "avg_hold_time_days": 127.4
         }
       },
-      "queriesServed": 48,
-      "totalEarned": 2.3975,
+      "queriesServed": 56,
+      "totalEarned": 2.7775,
       "createdAt": "2026-04-01T00:00:00Z"
     },
     {
@@ -397,8 +397,8 @@
           "highest_apy_protocol": "Beefy Finance"
         }
       },
-      "queriesServed": 205,
-      "totalEarned": 4.099,
+      "queriesServed": 213,
+      "totalEarned": 4.251,
       "createdAt": "2026-04-03T00:00:00Z"
     },
     {
@@ -510,8 +510,8 @@
           "scored_at": "2026-04-08T06:00:00Z"
         }
       },
-      "queriesServed": 157,
-      "totalEarned": 4.7085,
+      "queriesServed": 165,
+      "totalEarned": 4.9365,
       "createdAt": "2026-04-02T00:00:00Z"
     },
     {
@@ -771,8 +771,8 @@
           ]
         }
       },
-      "queriesServed": 135,
-      "totalEarned": 5.398,
+      "queriesServed": 143,
+      "totalEarned": 5.702,
       "createdAt": "2026-04-06T00:00:00Z"
     }
   ],
@@ -832,6 +832,289 @@
       "amount": 0.04,
       "buyerQuery": "[Agent Job job-b35b838b-e7e5-4cc7-9ca4-349fe1da6e2a] Find me best USDC yield, medium risk, $500 budget",
       "timestamp": "2026-04-10T09:39:09.316Z"
+    },
+    {
+      "id": "tx-agent-0f33b663-a12a-4421-94a1-de3f8bcc2d70",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776037127053",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-435739e2-1f16-40b0-8bd8-cedaffc42b9c] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:38:47.054Z"
+    },
+    {
+      "id": "tx-agent-fc132d24-d55a-40b7-8380-3fa9f2b5d6fc",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776037127054",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-435739e2-1f16-40b0-8bd8-cedaffc42b9c] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:38:47.055Z"
+    },
+    {
+      "id": "tx-agent-957b3703-e039-4465-9c44-f78292885daa",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776037127055",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-435739e2-1f16-40b0-8bd8-cedaffc42b9c] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:38:47.056Z"
+    },
+    {
+      "id": "tx-agent-60a38911-4281-4202-9143-dc36b468ebc7",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776037127056",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-435739e2-1f16-40b0-8bd8-cedaffc42b9c] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:38:47.056Z"
+    },
+    {
+      "id": "tx-agent-40bfd089-879d-47ee-952d-da4893bc2d52",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776037209413",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-9381c1ce-844b-49be-8190-a66181bc2238] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:40:09.413Z"
+    },
+    {
+      "id": "tx-agent-2fb8ced3-eb66-46a1-8d28-644c151ba940",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776037209414",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-9381c1ce-844b-49be-8190-a66181bc2238] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:40:09.414Z"
+    },
+    {
+      "id": "tx-agent-4f3cdd64-12f9-4777-91a0-10b57cdd0f55",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776037209415",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-9381c1ce-844b-49be-8190-a66181bc2238] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:40:09.415Z"
+    },
+    {
+      "id": "tx-agent-61d45758-a7bb-49c4-ac91-517321509322",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776037209416",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-9381c1ce-844b-49be-8190-a66181bc2238] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:40:09.416Z"
+    },
+    {
+      "id": "tx-agent-42f4aa90-054d-4937-99d4-fa1908d6958e",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776037660184",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-e99f1704-bdcb-43f3-8444-67586d334552] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:47:40.185Z"
+    },
+    {
+      "id": "tx-agent-8ba8eec3-52f4-4f90-9f7b-69874b221a1b",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776037660186",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-e99f1704-bdcb-43f3-8444-67586d334552] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:47:40.186Z"
+    },
+    {
+      "id": "tx-agent-5b5e933a-45a5-48fd-9f5f-197dc84e089f",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776037660187",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-e99f1704-bdcb-43f3-8444-67586d334552] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:47:40.188Z"
+    },
+    {
+      "id": "tx-agent-ae4e3748-0b55-40c0-9c8c-2d01ab6e1bdd",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776037660188",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-e99f1704-bdcb-43f3-8444-67586d334552] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:47:40.189Z"
+    },
+    {
+      "id": "tx-agent-edd9ee38-9c3b-4d37-8d6d-c8aec5e23f74",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776037740621",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-ad2125d2-2c2c-4d8d-939f-f554f8f92211] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:49:00.622Z"
+    },
+    {
+      "id": "tx-agent-81efb99f-c27c-44c0-b75f-115f74720502",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776037740622",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-ad2125d2-2c2c-4d8d-939f-f554f8f92211] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:49:00.623Z"
+    },
+    {
+      "id": "tx-agent-d6db1bf1-9850-4f68-abe5-e1a70df7cdb6",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776037740623",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-ad2125d2-2c2c-4d8d-939f-f554f8f92211] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:49:00.624Z"
+    },
+    {
+      "id": "tx-agent-b9cb9c90-4f3d-4f90-8559-068281912dd4",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776037740624",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-ad2125d2-2c2c-4d8d-939f-f554f8f92211] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:49:00.624Z"
+    },
+    {
+      "id": "tx-agent-24497616-3a06-4739-a06b-52e78f94947a",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776038018215",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-7300b6d8-e216-402a-bab5-5e96a2d69f65] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:53:38.216Z"
+    },
+    {
+      "id": "tx-agent-6d5e4506-45a5-447d-afc1-47786d04551f",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776038018217",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-7300b6d8-e216-402a-bab5-5e96a2d69f65] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:53:38.217Z"
+    },
+    {
+      "id": "tx-agent-ee15bf8d-3e2f-4dc3-95d6-46f4a273ab20",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776038018218",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-7300b6d8-e216-402a-bab5-5e96a2d69f65] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:53:38.218Z"
+    },
+    {
+      "id": "tx-agent-9607c605-0faa-44f0-b7cf-600560b96617",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776038018219",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-7300b6d8-e216-402a-bab5-5e96a2d69f65] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:53:38.219Z"
+    },
+    {
+      "id": "tx-agent-8507bd74-57f3-42e8-b06d-ead4311a4798",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776038059869",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-b54f13db-5470-4dab-a454-22be2e42fc70] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:54:19.870Z"
+    },
+    {
+      "id": "tx-agent-94475ff9-d213-4583-bb3b-7a53e54176ea",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776038059870",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-b54f13db-5470-4dab-a454-22be2e42fc70] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:54:19.871Z"
+    },
+    {
+      "id": "tx-agent-88ff20e8-fb27-4b9f-8c40-e3c4c2c0b98b",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776038059871",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-b54f13db-5470-4dab-a454-22be2e42fc70] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:54:19.872Z"
+    },
+    {
+      "id": "tx-agent-5e90291e-ca5a-4a9d-a0a3-19bd6a734e4c",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776038059872",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-b54f13db-5470-4dab-a454-22be2e42fc70] best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-12T23:54:19.873Z"
+    },
+    {
+      "id": "tx-agent-job-job-b54f13db-5470-4dab-a454-22be2e42fc70",
+      "datasetId": "agent-job",
+      "txHash": "demo-agent-1776038059868",
+      "amount": 1,
+      "buyerQuery": "best low risk USDC yield with $500 budget",
+      "aiSummary": "Synthesising all four datasets: Dataset 1 identifies four low-risk USDC-denominated yield sources — Aave V3 Ethereum (5.82%), Compound V3 (5.24%), Morpho Blue (6.42%), and Aave V3 Arbitrum (6.91%) — all with TVLs exceeding $1B, providing the safety margin appropriate for a $500 low-risk position. Dataset 2 shows mixed whale behaviour: accumulators are favouring ETH, stETH, AAVE, MKR, and USDC, while distributors are exiting ARB, OP, and speculative tokens — the accumulation of AAVE governance tokens by wallet 0x6262998 lends soft confirmation to Aave protocol health. Dataset 3 risk scores reveal that the most active whale accumulators carry risk scores between 24–44 (Very Low to Medium), suggesting institutional-grade, conservative capital is moving into blue-chip DeFi rather than high-yield speculation — consistent with recommending Aave or Morpho over Yearn or Convex. Dataset 4 shows a market-wide greed score of 71 with ETH trending bullish (+5.2%, score 68) and AAVE itself showing neutral-positive sentiment (score 58, +2.1%), meaning the broader environment supports DeFi participation but warrants caution against over-extending into medium or high risk vaults. The convergence of highest low-risk APY, massive TVL, whale-level AAVE accumulation, and stable sentiment makes Aave V3 Ethereum the primary recommendation, with Morpho Blue and Aave Arbitrum as credible, data-supported alternatives.",
+      "timestamp": "2026-04-12T23:54:48.840Z"
+    },
+    {
+      "id": "tx-agent-93999bb4-5f84-4ae1-b3a5-ac4330bc31ff",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776038419973",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-7524fc8f-2dd4-4120-b569-5383c01d73da] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:00:19.974Z"
+    },
+    {
+      "id": "tx-agent-c753c7f2-8c8d-4464-8d65-a17eda603c80",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776038419975",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-7524fc8f-2dd4-4120-b569-5383c01d73da] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:00:19.976Z"
+    },
+    {
+      "id": "tx-agent-e0307efe-5934-41a0-8c12-61e086f9b29e",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776038419979",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-7524fc8f-2dd4-4120-b569-5383c01d73da] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:00:19.980Z"
+    },
+    {
+      "id": "tx-agent-ad260637-9617-4092-be7b-81f8b69ad305",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776038419981",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-7524fc8f-2dd4-4120-b569-5383c01d73da] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:00:19.982Z"
+    },
+    {
+      "id": "tx-agent-job-job-7524fc8f-2dd4-4120-b569-5383c01d73da",
+      "datasetId": "agent-job",
+      "txHash": "demo-agent-1776038419970",
+      "amount": 1,
+      "buyerQuery": "Best low risk USDC yield with $500 budget",
+      "aiSummary": "Synthesising all four datasets for a low-risk $500 USDC yield strategy: Dataset 1 identifies three credible low-risk USDC lending options — Aave V3 Ethereum (5.82% APY, $8.42B TVL), Morpho Blue (6.42% APY, $1.84B TVL), and Aave V3 Arbitrum (6.91% APY, $1.27B TVL) — while excluding medium and high-risk protocols such as Yearn (7.34%, medium), Stargate (8.72%, medium), and Radiant Capital (14.32%, high). Dataset 2 shows smart money accumulating AAVE tokens (wallet 0x6262998, +920.7 ETH net inflow) and ETH/stETH (wallet 0x28C6c06, +3,201 ETH), confirming conviction in blue-chip DeFi infrastructure rather than speculative assets. Dataset 3 risk scores reveal that the most active accumulating wallets aligned with conservative DeFi (0x8894E0, risk score 24; 0xBE0eB53, risk score 15) are the lowest-risk operators in the cohort, reinforcing the thesis that sophisticated low-risk capital is flowing into established lending protocols. Dataset 4 sentiment shows AAVE at a neutral 58/100 with slight upward price momentum (+2.1%), Ethereum broadly bullish at 68/100 (+5.2%), and the macro Fear & Greed Index at 71, suggesting a risk-on environment that supports DeFi lending demand and healthy borrow rates sustaining current APYs. No systemic red flags exist for USDC lending on Aave V3, making it the optimal intersection of yield, security, liquidity depth, and smart-money validation for this user profile.",
+      "timestamp": "2026-04-13T00:00:48.199Z"
+    },
+    {
+      "id": "tx-agent-6244f14e-adbb-42a6-9b07-5ead4f68e32f",
+      "datasetId": "ds-003-defi-yields",
+      "txHash": "demo-yield-data-1776039188403",
+      "amount": 0.02,
+      "buyerQuery": "[Agent Job job-eaa775e8-a4b3-4ecf-84c7-d31517474d6e] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:13:08.404Z"
+    },
+    {
+      "id": "tx-agent-2c4712a5-c09d-4d2c-b98d-36490addeebd",
+      "datasetId": "ds-001-whale-wallets",
+      "txHash": "demo-whale-wallets-1776039188406",
+      "amount": 0.05,
+      "buyerQuery": "[Agent Job job-eaa775e8-a4b3-4ecf-84c7-d31517474d6e] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:13:08.407Z"
+    },
+    {
+      "id": "tx-agent-0878a805-5dad-4b01-b462-0b672ee45d9d",
+      "datasetId": "ds-004-wallet-risk",
+      "txHash": "demo-risk-scores-1776039188408",
+      "amount": 0.03,
+      "buyerQuery": "[Agent Job job-eaa775e8-a4b3-4ecf-84c7-d31517474d6e] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:13:08.409Z"
+    },
+    {
+      "id": "tx-agent-fb139fc7-330d-4263-8930-2fed5bea7e30",
+      "datasetId": "ds-006-sentiment",
+      "txHash": "demo-sentiment-1776039188411",
+      "amount": 0.04,
+      "buyerQuery": "[Agent Job job-eaa775e8-a4b3-4ecf-84c7-d31517474d6e] Best low risk USDC yield with $500 budget",
+      "timestamp": "2026-04-13T00:13:08.412Z"
+    },
+    {
+      "id": "tx-agent-job-job-eaa775e8-a4b3-4ecf-84c7-d31517474d6e",
+      "datasetId": "agent-job",
+      "txHash": "demo-agent-1776039188400",
+      "amount": 1,
+      "buyerQuery": "Best low risk USDC yield with $500 budget",
+      "aiSummary": "Synthesising all four datasets: the yield data identifies three genuinely low-risk USDC opportunities — Aave V3 Ethereum (5.82%), Morpho Blue (6.42%), and Aave V3 Arbitrum (6.91%) — all carrying explicit low-risk labels and multi-billion dollar TVL. Yearn Finance offers 7.34% but is rated medium risk, disqualifying it for this user. Whale movement data shows accumulation of ETH, USDC, and AAVE governance tokens by the lowest-risk wallets (scores 15-24), while high-risk wallets (scores 71-88) are distributing or chasing speculative assets like PEPE and SHIB — this behavioural divergence strongly validates a conservative stablecoin lending posture. The risk score dataset confirms the most trustworthy whale cohort (0x8894E0 at score 24, 0xBE0eB5 at score 15) is holding USDC and blue-chip assets, not rotating into high-yield farms. Market sentiment shows Ethereum at 68 (Greed) with a bullish trend and +5.2% 24h move, which supports healthy DeFi utilisation rates that drive up lending APYs on Aave — a direct tailwind for the recommended position. The AAVE token itself is trending up with neutral-to-positive sentiment, suggesting the protocol's governance and risk parameters are viewed favourably by the market. No critical red flags exist for the top pick; the primary practical concern for a $500 budget is Ethereum gas optimisation, which the Arbitrum alternative resolves.",
+      "timestamp": "2026-04-13T00:13:35.409Z"
     }
   ]
 }

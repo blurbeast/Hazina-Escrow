@@ -9,7 +9,6 @@ import { useCountUp } from '../hooks/useCountUp';
 import { formatUSDC, getTypeMeta, truncateAddress } from '../lib/utils';
 import clsx from 'clsx';
 
-/* ── Floating particle ── */
 function Particle({ style }: { style: React.CSSProperties }) {
   return (
     <div

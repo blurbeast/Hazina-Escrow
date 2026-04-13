@@ -5,8 +5,8 @@ import LandingPage from './pages/LandingPage';
 import MarketplacePage from './pages/MarketplacePage';
 import SellPage from './pages/SellPage';
 import DashboardPage from './pages/DashboardPage';
+import AgentPage from './pages/AgentPage';
 
-// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
@@ -23,6 +23,7 @@ export default function App() {
         <Route path="/marketplace" element={<MarketplacePage />} />
         <Route path="/sell" element={<SellPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/agent" element={<AgentPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

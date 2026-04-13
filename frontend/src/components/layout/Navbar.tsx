@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Database, BarChart3, Upload, ShoppingCart, Menu, X } from 'lucide-react';
+import { Database, BarChart3, Upload, ShoppingCart, Menu, X, Bot } from 'lucide-react';
 import { useState } from 'react';
 import clsx from 'clsx';
 
 const NAV_LINKS = [
   { to: '/marketplace', label: 'Marketplace', icon: ShoppingCart },
+  { to: '/agent', label: 'AI Agent', icon: Bot },
   { to: '/sell', label: 'Sell Data', icon: Upload },
   { to: '/dashboard', label: 'Dashboard', icon: BarChart3 },
 ];

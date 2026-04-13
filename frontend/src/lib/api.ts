@@ -1,5 +1,65 @@
 const BASE = '/api';
 
+export interface AgentSellerPayment {
+  seller: string;
+  type: string;
+  amount: number;
+  txHash: string;
+  onChain: boolean;
+}
+
+export interface AgentReport {
+  topOpportunity: {
+    protocol: string;
+    vault: string;
+    chain: string;
+    apy: number;
+    riskLevel: string;
+    whaleConfidence: string;
+    sentimentScore: string;
+  };
+  reasoning: string;
+  alternatives: string[];
+  warnings: string[];
+  rawAnalysis: string;
+}
+
+export interface AgentJob {
+  success: boolean;
+  demo?: boolean;
+  jobId: string;
+  query: string;
+  report: AgentReport;
+  payments: {
+    humanPaid: number;
+    currency: string;
+    network: string;
+    note?: string;
+    sellerPayments: AgentSellerPayment[];
+    totalSpent: number;
+    agentProfit: number;
+  };
+  meta: {
+    agentWallet: string;
+    timestamp: string;
+    datasetsQueried: number;
+  };
+}
+
+export interface AgentInfo {
+  success: boolean;
+  agent: {
+    name: string;
+    version: string;
+    description: string;
+    agentWallet: string;
+    fee: { amount: number; currency: string; network: string; description: string };
+    sellers: { type: string; role: string; cost: number }[];
+    agentProfit: number;
+    escrowWallet: string;
+  };
+}
+
 export interface DatasetMeta {
   id: string;
   name: string;
@@ -90,6 +150,21 @@ export const api = {
     request<QueryResult>(`${BASE}/verify/${id}/demo`, {
       method: 'POST',
       body: JSON.stringify({ buyerQuestion }),
+    }),
+
+  agentInfo: () =>
+    request<AgentInfo>(`${BASE}/agent/info`),
+
+  agentDemo: (query: string) =>
+    request<AgentJob>(`${BASE}/agent/research/demo`, {
+      method: 'POST',
+      body: JSON.stringify({ query }),
+    }),
+
+  agentResearch: (query: string, txHash: string) =>
+    request<AgentJob>(`${BASE}/agent/research`, {
+      method: 'POST',
+      body: JSON.stringify({ query, txHash }),
     }),
 
   createDataset: (payload: {

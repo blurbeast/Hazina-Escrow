@@ -1,11 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk';
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
 export async function generateDataSummary(
   data: Record<string, unknown>,
   buyerQuestion?: string
 ): Promise<{ summary: string; answer?: string }> {
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   const question = buyerQuestion?.trim();
 
   const prompt = question

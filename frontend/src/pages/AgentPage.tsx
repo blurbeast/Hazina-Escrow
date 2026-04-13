@@ -1,0 +1,312 @@
+import { useState } from 'react';
+import {
+  Bot,
+  Search,
+  Loader2,
+  TrendingUp,
+  AlertTriangle,
+  CheckCircle,
+  Zap,
+  DollarSign,
+  ShieldCheck,
+  Activity,
+} from 'lucide-react';
+import { api, AgentJob } from '../lib/api';
+import clsx from 'clsx';
+
+const EXAMPLE_QUERIES = [
+  'Best low risk USDC yield with $500 budget',
+  'High APY opportunities with strong whale confidence',
+  'Safe stablecoin pools on Ethereum, $1000 budget',
+  'Aggressive DeFi yields, high risk tolerance',
+];
+
+const RISK_COLOR: Record<string, string> = {
+  Low: 'text-emerald-400',
+  Medium: 'text-amber-400',
+  High: 'text-red-400',
+};
+
+const SENTIMENT_COLOR: Record<string, string> = {
+  Bullish: 'text-emerald-400',
+  Neutral: 'text-foreground-muted',
+  Bearish: 'text-red-400',
+};
+
+const CONFIDENCE_COLOR: Record<string, string> = {
+  High: 'text-emerald-400',
+  Medium: 'text-amber-400',
+  Low: 'text-red-400',
+  Neutral: 'text-foreground-muted',
+};
+
+export default function AgentPage() {
+  const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<AgentJob | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function runAgent() {
+    if (!query.trim() || query.trim().length < 5) return;
+    setLoading(true);
+    setError(null);
+    setResult(null);
+    try {
+      const job = await api.agentDemo(query.trim());
+      setResult(job);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="min-h-screen pt-28 pb-20">
+      <div className="max-w-4xl mx-auto px-4">
+
+        {/* Header */}
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center">
+              <Bot className="w-5 h-5 text-gold" />
+            </div>
+            <p className="text-gold text-sm font-body font-medium tracking-widest uppercase">AI-Powered</p>
+          </div>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-3">
+            Research Agent
+          </h1>
+          <p className="text-foreground-muted font-body text-lg">
+            Ask the agent anything about DeFi yields. It autonomously buys data from 4 on-chain sellers
+            via Stellar micro-payments, then synthesises a Claude-powered report.
+          </p>
+        </div>
+
+        {/* How it works strip */}
+        <div className="glass-card p-5 mb-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { icon: DollarSign, label: 'You pay', value: '1 USDC' },
+            { icon: Activity, label: 'Datasets queried', value: '4 sellers' },
+            { icon: Zap, label: 'Agent spends', value: '0.14 USDC' },
+            { icon: ShieldCheck, label: 'Protocol', value: 'Stellar x402' },
+          ].map(({ icon: Icon, label, value }) => (
+            <div key={label} className="flex flex-col items-center text-center gap-1">
+              <Icon className="w-4 h-4 text-gold mb-1" />
+              <p className="text-xs font-body text-foreground-muted">{label}</p>
+              <p className="text-sm font-body font-semibold text-foreground">{value}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Query input */}
+        <div className="glass-card-gold p-6 mb-6">
+          <label className="block text-sm font-body font-medium text-foreground mb-3">
+            What do you want to research?
+          </label>
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && runAgent()}
+              placeholder="e.g. best low risk USDC yield with $500 budget"
+              className="w-full bg-void/60 border border-border/60 rounded-xl pl-11 pr-4 py-3 text-sm font-body text-foreground placeholder:text-muted focus:outline-none focus:border-gold/40 transition-colors"
+            />
+          </div>
+
+          {/* Example queries */}
+          <div className="flex flex-wrap gap-2 mt-3">
+            {EXAMPLE_QUERIES.map((q) => (
+              <button
+                key={q}
+                onClick={() => setQuery(q)}
+                className="px-3 py-1.5 rounded-lg text-xs font-body bg-surface-2 text-foreground-muted hover:text-gold hover:bg-gold/10 transition-all duration-200"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between mt-5">
+            <p className="text-xs font-body text-foreground-muted">
+              Demo mode — payments simulated on Stellar testnet
+            </p>
+            <button
+              onClick={runAgent}
+              disabled={loading || query.trim().length < 5}
+              className={clsx(
+                'btn-gold px-6 py-2.5 text-sm flex items-center gap-2 transition-all duration-200',
+                (loading || query.trim().length < 5) && 'opacity-50 cursor-not-allowed'
+              )}
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Researching...
+                </>
+              ) : (
+                <>
+                  <Bot className="w-4 h-4" />
+                  Run Agent
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Loading skeleton */}
+        {loading && (
+          <div className="glass-card p-6 animate-pulse space-y-4">
+            <div className="h-5 bg-surface-2 rounded w-1/3" />
+            <div className="h-4 bg-surface-2 rounded w-full" />
+            <div className="h-4 bg-surface-2 rounded w-5/6" />
+            <div className="grid grid-cols-3 gap-4 mt-4">
+              <div className="h-20 bg-surface-2 rounded-xl" />
+              <div className="h-20 bg-surface-2 rounded-xl" />
+              <div className="h-20 bg-surface-2 rounded-xl" />
+            </div>
+          </div>
+        )}
+
+        {/* Error */}
+        {error && (
+          <div className="glass-card border border-red-500/30 p-5 flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-body font-medium text-red-400 text-sm mb-1">Agent error</p>
+              <p className="font-body text-foreground-muted text-sm">{error}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Result */}
+        {result && !loading && (
+          <div className="space-y-4">
+            {/* Top opportunity */}
+            <div className="glass-card-gold p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <TrendingUp className="w-5 h-5 text-gold" />
+                <h2 className="font-display text-lg font-semibold text-foreground">Top Opportunity</h2>
+                {result.demo && (
+                  <span className="ml-auto px-2 py-0.5 rounded-full text-xs font-body bg-gold/10 text-gold border border-gold/20">
+                    Demo
+                  </span>
+                )}
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-5">
+                <div>
+                  <p className="text-xs text-foreground-muted font-body mb-1">Protocol</p>
+                  <p className="font-display font-semibold text-foreground">{result.report.topOpportunity.protocol}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-foreground-muted font-body mb-1">Vault / Pool</p>
+                  <p className="font-body font-medium text-foreground text-sm">{result.report.topOpportunity.vault}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-foreground-muted font-body mb-1">Chain</p>
+                  <p className="font-body font-medium text-foreground text-sm">{result.report.topOpportunity.chain}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-foreground-muted font-body mb-1">APY</p>
+                  <p className="font-display font-bold text-gold text-xl">{result.report.topOpportunity.apy}%</p>
+                </div>
+                <div>
+                  <p className="text-xs text-foreground-muted font-body mb-1">Risk Level</p>
+                  <p className={clsx('font-body font-semibold text-sm', RISK_COLOR[result.report.topOpportunity.riskLevel] ?? 'text-foreground')}>
+                    {result.report.topOpportunity.riskLevel}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-foreground-muted font-body mb-1">Whale Confidence</p>
+                  <p className={clsx('font-body font-semibold text-sm', CONFIDENCE_COLOR[result.report.topOpportunity.whaleConfidence] ?? 'text-foreground')}>
+                    {result.report.topOpportunity.whaleConfidence}
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-t border-border/40 pt-4">
+                <p className="text-xs text-foreground-muted font-body mb-2">Sentiment</p>
+                <span className={clsx('text-sm font-body font-semibold', SENTIMENT_COLOR[result.report.topOpportunity.sentimentScore] ?? 'text-foreground')}>
+                  {result.report.topOpportunity.sentimentScore}
+                </span>
+              </div>
+            </div>
+
+            {/* Reasoning */}
+            <div className="glass-card p-6">
+              <h3 className="font-display font-semibold text-foreground mb-3">Reasoning</h3>
+              <p className="font-body text-foreground-muted text-sm leading-relaxed">{result.report.reasoning}</p>
+            </div>
+
+            {/* Alternatives + Warnings */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="glass-card p-5">
+                <h3 className="font-display font-semibold text-foreground mb-3 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  Alternatives
+                </h3>
+                {result.report.alternatives.length === 0 ? (
+                  <p className="text-xs font-body text-foreground-muted">No alternatives suggested.</p>
+                ) : (
+                  <ul className="space-y-2">
+                    {result.report.alternatives.map((alt, i) => (
+                      <li key={i} className="text-sm font-body text-foreground-muted leading-relaxed flex gap-2">
+                        <span className="text-gold font-semibold flex-shrink-0">{i + 1}.</span>
+                        {alt}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              <div className="glass-card p-5">
+                <h3 className="font-display font-semibold text-foreground mb-3 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  Warnings
+                </h3>
+                {result.report.warnings.length === 0 ? (
+                  <p className="text-sm font-body text-emerald-400">No warnings — looks clean.</p>
+                ) : (
+                  <ul className="space-y-2">
+                    {result.report.warnings.map((w, i) => (
+                      <li key={i} className="text-sm font-body text-amber-300 leading-relaxed flex gap-2">
+                        <span className="flex-shrink-0">•</span>
+                        {w}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+
+            {/* Raw analysis */}
+            <div className="glass-card p-6">
+              <h3 className="font-display font-semibold text-foreground mb-3">Full Analysis</h3>
+              <p className="font-body text-foreground-muted text-sm leading-relaxed">{result.report.rawAnalysis}</p>
+            </div>
+
+            {/* Payment trail */}
+            <div className="glass-card p-6">
+              <h3 className="font-display font-semibold text-foreground mb-4">Payment Trail</h3>
+              <div className="space-y-2 mb-4">
+                {result.payments.sellerPayments.map((p) => (
+                  <div key={p.txHash} className="flex items-center justify-between text-sm font-body">
+                    <span className="text-foreground-muted">{p.seller}</span>
+                    <span className="text-foreground font-medium">{p.amount} USDC</span>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t border-border/40 pt-3 flex items-center justify-between text-sm font-body">
+                <span className="text-foreground-muted">Agent profit</span>
+                <span className="text-gold font-semibold">{result.payments.agentProfit} USDC</span>
+              </div>
+              <p className="text-xs font-body text-foreground-muted mt-3">{result.payments.note}</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
