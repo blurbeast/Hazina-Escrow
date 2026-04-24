@@ -9,6 +9,7 @@ import {
 import { verifyStellarPayment } from './stellar.service';
 import { generateDataSummary } from '../ai/claude.service';
 import { sendUsdcPayment } from '../agent/agent.wallet';
+import { logger } from '../lib/logger';
 
 export const paymentsRouter = Router();
 
@@ -174,7 +175,7 @@ paymentsRouter.post('/verify/:id', async (req: Request, res: Response) => {
       summary = result.summary;
       answer = result.answer;
     } catch (aiErr) {
-      console.warn('AI summary failed, proceeding without:', aiErr);
+      logger.warn({ aiErr }, 'AI summary failed, proceeding without');
       summary = 'Data delivered successfully. AI summary temporarily unavailable.';
     }
 
@@ -188,9 +189,19 @@ paymentsRouter.post('/verify/:id', async (req: Request, res: Response) => {
         memo: `hazina-${dataset.id.slice(0, 10)}`,
       });
       sellerTxHash = payment.txHash;
-      console.log(`[Escrow] Paid seller ${sellerAmount} USDC → ${dataset.sellerWallet} (${sellerTxHash})`);
+      logger.info(
+        { 
+          sellerAmount, 
+          sellerWallet: dataset.sellerWallet, 
+          sellerTxHash 
+        }, 
+        `[Escrow] Paid seller ${sellerAmount} USDC → ${dataset.sellerWallet} (${sellerTxHash})`
+      );
     } catch (payErr) {
-      console.warn('[Escrow] Seller payment failed (data still delivered):', payErr instanceof Error ? payErr.message : payErr);
+      logger.warn(
+        { payErr: payErr instanceof Error ? payErr.message : payErr }, 
+        '[Escrow] Seller payment failed (data still delivered)'
+      );
     }
 
     // Update dataset stats
@@ -223,7 +234,7 @@ paymentsRouter.post('/verify/:id', async (req: Request, res: Response) => {
       },
     });
   } catch (err) {
-    console.error('Verification error:', err);
+    logger.error({ err }, 'Verification error');
     return res.status(500).json({ error: 'Internal verification error' });
   }
 });
@@ -242,7 +253,7 @@ paymentsRouter.post('/verify/:id/demo', async (req: Request, res: Response) => {
     summary = result.summary;
     answer = result.answer;
   } catch (err) {
-    console.error('Demo mode AI error:', err);
+    logger.error({ err }, 'Demo mode AI error');
     summary = 'Demo mode: AI summary unavailable. Set ANTHROPIC_API_KEY to enable.';
   }
 

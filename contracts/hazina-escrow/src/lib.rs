@@ -123,11 +123,12 @@ impl HazinaEscrow {
         let seller_cut   = record.amount - platform_cut;
 
         let token_client = token::Client::new(&env, &record.token);
-        token_client.transfer(&env.current_contract_address(), &record.seller, &seller_cut);
-        token_client.transfer(&env.current_contract_address(), &admin, &platform_cut);
 
         record.released = true;
         env.storage().persistent().set(&EscrowKey::Record(escrow_id), &record);
+
+        token_client.transfer(&env.current_contract_address(), &record.seller, &seller_cut);
+        token_client.transfer(&env.current_contract_address(), &admin, &platform_cut);
 
         env.events().publish(
             (soroban_sdk::symbol_short!("released"),),
@@ -150,10 +151,11 @@ impl HazinaEscrow {
         assert!(!record.refunded, "already refunded");
 
         let token_client = token::Client::new(&env, &record.token);
-        token_client.transfer(&env.current_contract_address(), &record.buyer, &record.amount);
 
         record.refunded = true;
         env.storage().persistent().set(&EscrowKey::Record(escrow_id), &record);
+
+        token_client.transfer(&env.current_contract_address(), &record.buyer, &record.amount);
 
         env.events().publish(
             (soroban_sdk::symbol_short!("refunded"),),
