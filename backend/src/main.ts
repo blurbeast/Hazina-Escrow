@@ -1,11 +1,14 @@
+import { initializeDatadog } from './common/datadog';
+import dotenv from 'dotenv';
+
+dotenv.config();
+initializeDatadog();
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import { datasetsRouter } from './datasets/datasets.router';
 import { paymentsRouter } from './payments/payments.router';
 import { agentRouter } from './agent/agent.router';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
