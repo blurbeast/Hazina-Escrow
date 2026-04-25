@@ -22,8 +22,9 @@ import { backupRouter, setBackupScheduler } from './common/backup.router';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors({ origin: process.env.FRONTEND_URL || "http://localhost:5173" }));
-app.use(express.json({ limit: "10mb" }));
+app.use(pinoHttp({ logger }));
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173' }));
+app.use(express.json({ limit: '10mb' }));
 
 // Rate limiting — global + per-route limits for sensitive endpoints
 const FIFTEEN_MINUTES_MS = 15 * 60 * 1000;
@@ -182,14 +183,11 @@ app.use('/api/agent', agentRouter);
 app.use('/api/webhooks', webhooksRouter);
 app.use('/api', backupRouter);
 
+// Global Error Handler (MUST be last)
+app.use(errorHandler);
+
 app.listen(PORT, () => {
-  console.log(`\n  ██╗  ██╗ █████╗ ███████╗██╗███╗   ██╗ █████╗`);
-  console.log(`  ██║  ██║██╔══██╗╚══███╔╝██║████╗  ██║██╔══██╗`);
-  console.log(`  ███████║███████║  ███╔╝ ██║██╔██╗ ██║███████║`);
-  console.log(`  ██╔══██║██╔══██║ ███╔╝  ██║██║╚██╗██║██╔══██║`);
-  console.log(`  ██║  ██║██║  ██║███████╗██║██║ ╚████║██║  ██║`);
-  console.log(`  ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝`);
-  console.log(`\n  Data Escrow API running on http://localhost:${PORT}\n`);
+  logger.info(`Data Escrow API running on http://localhost:${PORT}`);
 });
 
 export default app;

@@ -187,9 +187,8 @@ paymentsRouter.post("/verify/:id", validateBody(verifySchema), async (req: Reque
       summary = result.summary;
       answer = result.answer;
     } catch (aiErr) {
-      console.warn("AI summary failed, proceeding without:", aiErr);
-      summary =
-        "Data delivered successfully. AI summary temporarily unavailable.";
+      logger.warn({ aiErr }, 'AI summary failed, proceeding without');
+      summary = 'Data delivered successfully. AI summary temporarily unavailable.';
     }
 
     // Forward 95% to seller on-chain
@@ -202,13 +201,18 @@ paymentsRouter.post("/verify/:id", validateBody(verifySchema), async (req: Reque
         memo: `hazina-${dataset.id.slice(0, 10)}`,
       });
       sellerTxHash = payment.txHash;
-      console.log(
-        `[Escrow] Paid seller ${sellerAmount} USDC → ${dataset.sellerWallet} (${sellerTxHash})`,
+      logger.info(
+        { 
+          sellerAmount, 
+          sellerWallet: dataset.sellerWallet, 
+          sellerTxHash 
+        }, 
+        `[Escrow] Paid seller ${sellerAmount} USDC → ${dataset.sellerWallet} (${sellerTxHash})`
       );
     } catch (payErr) {
-      console.warn(
-        "[Escrow] Seller payment failed (data still delivered):",
-        payErr instanceof Error ? payErr.message : payErr,
+      logger.warn(
+        { payErr: payErr instanceof Error ? payErr.message : payErr }, 
+        '[Escrow] Seller payment failed (data still delivered)'
       );
     }
 
@@ -260,8 +264,8 @@ paymentsRouter.post("/verify/:id", validateBody(verifySchema), async (req: Reque
       },
     });
   } catch (err) {
-    console.error("Verification error:", err);
-    return res.status(500).json({ error: "Internal verification error" });
+    logger.error({ err }, 'Verification error');
+    return res.status(500).json({ error: 'Internal verification error' });
   }
 });
 
@@ -279,9 +283,8 @@ paymentsRouter.post("/verify/:id/demo", validateBody(verifyDemoSchema), async (r
     summary = result.summary;
     answer = result.answer;
   } catch (err) {
-    console.error("Demo mode AI error:", err);
-    summary =
-      "Demo mode: AI summary unavailable. Set ANTHROPIC_API_KEY to enable.";
+    logger.error({ err }, 'Demo mode AI error');
+    summary = 'Demo mode: AI summary unavailable. Set ANTHROPIC_API_KEY to enable.';
   }
 
   updateDataset(dataset.id, {
